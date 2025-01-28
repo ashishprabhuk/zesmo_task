@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const baseURL = "http://localhost:8000";
+// const baseURL = "http://localhost:8000";
+const baseURL = "https://zesmo-task.onrender.com";
 
 const TaskDetail = () => {
   const { id } = useParams();

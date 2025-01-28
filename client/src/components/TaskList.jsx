@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const baseURL = 'http://localhost:8000';
+// const baseURL = 'http://localhost:8000';
+const baseURL = "https://zesmo-task.onrender.com";
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
