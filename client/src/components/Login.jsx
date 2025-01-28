@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
@@ -36,7 +36,7 @@ const Login = () => {
           <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <button type="submit" className="btn btn-primary">Login</button>
-        <h6>New User? <a href="/register">Register here!</a></h6>
+        <h6>New User? <Link to='/register'> Register here!</Link></h6>
       </form>
     </div>
   );
