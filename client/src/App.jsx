@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
-import SignUp from "././components/SignUp
+import SignUp from "././components/SignUp";
 import TaskList from "./components/TaskList";
 import TaskDetail from "./components/TaskDetail";
 import Navig from "./components/Navig";
