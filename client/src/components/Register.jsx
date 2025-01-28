@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./Register.css";
 
 const baseURL = 'http://localhost:8000';
 
@@ -42,7 +43,7 @@ const Register = () => {
           <input type="password" className="form-control" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
         </div>
         <button type="submit" className="btn btn-primary">Register</button>
-        <h6>Already a user? <a href="/login">Login here!</a></h6>
+        <h6>Already a user? <Link to='/login'> Login here!</Link></h6>
       </form>
     </div>
   );
