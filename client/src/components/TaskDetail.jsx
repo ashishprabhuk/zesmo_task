@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Container, Form, Button, Spinner, Alert } from "react-bootstrap";
+import { Container, Form, Button, Spinner, Alert, Row, Col } from "react-bootstrap";
 
 const baseURL = "https://zesmo-task.onrender.com";
 
@@ -74,7 +74,9 @@ const TaskDetail = () => {
   if (loading) return <Spinner animation="border" className="d-block mx-auto mt-4" />;
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4 ">
+      <Row className="justify-content-center">
+      <Col xs={12} lg={6}>
       <h2 className="text-center mb-4">Task Detail</h2>
       {task && task.title ? (
         <Form>
@@ -117,6 +119,8 @@ const TaskDetail = () => {
       ) : (
         <Alert variant="warning">Task not found.</Alert>
       )}
+      </Col>
+    </Row>
     </Container>
   );
 };

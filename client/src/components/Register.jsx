@@ -44,7 +44,7 @@ const Register = () => {
           <input type="password" className="form-control" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
         </div>
         <button type="submit" className="btn btn-primary">Register</button>
-        <h6>Already a user? <Link to='/login'> Login here!</Link></h6>
+        <h6 className="mt-2">Already a user? <Link to='/login'> Login here!</Link></h6>
       </form>
     </div>
   );

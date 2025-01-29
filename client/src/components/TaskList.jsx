@@ -210,72 +210,69 @@ const TaskList = () => {
 
   return (
     <Container className="mt-4">
-      <h2 className="text-center mb-4">Task Manager</h2>
-
-      {/* Task Input */}
-      <Row className="mb-3">
-        <Col md={8}>
-          <Form.Control
-            type="text"
-            placeholder="Enter new task..."
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-          />
-        </Col>
-        <Col md={4}>
-          <Button variant="success" onClick={handleAddTask} className="w-100">
-            Add Task
-          </Button>
+      <Row className="justify-content-center">
+        <Col xs={12} lg={6}>
+          <h2 className="text-center mb-4">Task Manager</h2>
+          <Row className="mb-3">
+            <Col md={8}>
+              <Form.Control
+                type="text"
+                placeholder="Enter new task..."
+                value={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
+              />
+            </Col>
+            <Col md={4}>
+              <Button variant="success" onClick={handleAddTask} className="w-100">
+                Add Task
+              </Button>
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Col md={6}>
+              <Form.Label>Filter by Status:</Form.Label>
+              <Form.Select value={filter} onChange={handleFilterChange}>
+                <option value="all">All</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+              </Form.Select>
+            </Col>
+          </Row>
+          {tasks.length === 0 && (
+            <Alert variant="info">
+              {localStorage.getItem("userId")
+                ? "No tasks available. Please add a task to get started!"
+                : "Please log in first to view and manage tasks."}
+            </Alert>
+          )}
+          {tasks.length > 0 && (
+            <ListGroup>
+              {filteredTasks.map((task) => (
+                <ListGroup.Item
+                  key={task._id}
+                  className="d-flex justify-content-between align-items-center"
+                  style={{
+                    backgroundColor: task.status === "completed" ? "#4bff54" : "#ffcc5e",
+                    color: "black",
+                  }}
+                >
+                  {task.title}
+                  <div className="d-flex">
+                    <Button variant="primary" size="sm" className="me-2 w-50" onClick={() => handleEditTask(task._id)}>
+                      Edit
+                    </Button>
+                    <Button variant="danger" size="sm" onClick={() => handleDeleteTask(task._id)}>
+                      Delete
+                    </Button>
+                  </div>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          )}
         </Col>
       </Row>
-
-      {/* Filter Selection */}
-      <Row className="mb-3">
-        <Col md={6}>
-          <Form.Label>Filter by Status:</Form.Label>
-          <Form.Select value={filter} onChange={handleFilterChange}>
-            <option value="all">All</option>
-            <option value="pending">Pending</option>
-            <option value="completed">Completed</option>
-          </Form.Select>
-        </Col>
-      </Row>
-
-      {/* Task List */}
-      {tasks.length === 0 && (
-        <Alert variant="info">
-          {localStorage.getItem("userId")
-            ? "No tasks available. Please add a task to get started!"
-            : "Please log in first to view and manage tasks."}
-        </Alert>
-      )}
-
-      {tasks.length > 0 && (
-        <ListGroup>
-          {filteredTasks.map((task) => (
-            <ListGroup.Item
-              key={task._id}
-              className="d-flex justify-content-between align-items-center"
-              style={{
-                backgroundColor: task.status === "completed" ? "#4bff54" : "#ffcc5e",
-                color: "black",
-              }}
-            >
-              {task.title}
-              <div className="d-flex">
-                <Button variant="primary" size="sm" className="me-2 w-50" onClick={() => handleEditTask(task._id)}>
-                  Edit
-                </Button>
-                <Button variant="danger" size="sm" onClick={() => handleDeleteTask(task._id)}>
-                  Delete
-                </Button>
-              </div>
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      )}
     </Container>
-  );
+  );  
 };
 
 export default TaskList;
